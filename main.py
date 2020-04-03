@@ -82,7 +82,7 @@ def extract_data_from_article_page(link_to_article_page, agent):
     data['Abstract'] = get_content_from_meta_data('DC.description')
 
     parsed_pdf = parser.from_file(data['Link to PDF'])
-    data['Article text'] = parsed_pdf['content']
+    data['Article text'] = parsed_pdf['content'].strip('\n').replace('\n', ' ')
     return data
 
 
